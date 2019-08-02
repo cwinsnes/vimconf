@@ -9,11 +9,17 @@ Plug 'tpope/vim-dispatch' " Enables easier compiler switching
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-eunuch'   " Enables syntactic sugar for several unix+vim commands
 Plug 'tpope/vim-rsi'      " Add support for several emacsy movements
+
+Plug 'ervandew/supertab'  " Make tab sane
 " }}}
 
 " {{{ Python plugins
-Plug 'tmhedberg/SimpylFold' " Better folding
+Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
+" }}}
+
+" {{{ Tags plugins
+Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
 " }}}
 
 call plug#end()
