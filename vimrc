@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 " {{{ General plugins
 Plug 'tpope/vim-dispatch' " Enables easier compiler switching
+Plug 'tpope/vim-fugitive' " Git wrapper
 " }}}
 
 " {{{ Python plugins
@@ -18,12 +19,15 @@ call plug#end()
 
 " {{{ Basic vim settings
 set showcmd
+set scrolloff=5
 let mapleader = " "
 set tabstop=4 softtabstop=0 shiftwidth=4 expandtab smarttab
 set autoindent
 set modeline
 set modelines=3
-nnoremap Q <nop>
+nnoremap Q <nop> 
+noremap <c-l> zz
+inoremap <c-l> <c-o>zz
 " }}}
 
 " {{{ File finding
