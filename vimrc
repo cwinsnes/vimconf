@@ -7,6 +7,8 @@ call plug#begin('~/.vim/plugged')
 " {{{ General plugins
 Plug 'tpope/vim-dispatch' " Enables easier compiler switching
 Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'tpope/vim-eunuch'   " Enables syntactic sugar for several unix+vim commands
+Plug 'tpope/vim-rsi'      " Add support for several emacsy movements
 " }}}
 
 " {{{ Python plugins
