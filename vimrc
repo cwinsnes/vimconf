@@ -25,9 +25,18 @@ set tabstop=4 softtabstop=0 shiftwidth=4 expandtab smarttab
 set autoindent
 set modeline
 set modelines=3
+set incsearch
 nnoremap Q <nop> 
 noremap <c-l> zz
 inoremap <c-l> <c-o>zz
+" }}}
+
+" {{{ Persistent undo
+set undofile
+if !isdirectory($HOME . "/.vim/undodir")
+    call mkdir($HOME . "/.vim/undodir", "p")
+endif
+set undodir=~/.vim/undodir"
 " }}}
 
 " {{{ File finding
