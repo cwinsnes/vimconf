@@ -80,6 +80,7 @@ let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+autocmd FileType netrw setl bufhidden=delete " Make netrw not wanna save files
 " }}}
 " {{{ Code folding
 set foldmethod=syntax
@@ -102,7 +103,8 @@ inoremap <c-l> <c-o>zz
 " Note: most settings are set in gvimrc instead
 set noerrorbells visualbell t_vb=
 
-colorscheme industry
+set background=dark
+colorscheme gruvbox
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
