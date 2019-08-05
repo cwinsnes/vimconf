@@ -3,3 +3,5 @@ tags
 plugged
 *.swp
 undodir
+backupdir
+swapdir
