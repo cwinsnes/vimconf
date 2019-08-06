@@ -13,6 +13,8 @@ Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
 
 Plug 'ervandew/supertab'  " Make tab sane
+
+Plug 'scrooloose/nerdtree' " Yes, netrw exists but it is worse by far
 " }}}
 
 " {{{ Python plugins
@@ -42,6 +44,7 @@ call plug#end()
 set showcmd
 set scrolloff=5
 let mapleader = " "
+let maplocalleader = " "
 set tabstop=4 softtabstop=0 shiftwidth=4 expandtab smarttab
 set autoindent
 set modeline
@@ -93,6 +96,12 @@ nnoremap <tab> za
 " }}}
 " }}}
 
+"{{{ NVim settings
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
+"}}}
+
 " {{{ Plugin options
 " {{{ LimeLight
 " Color name (:help cterm-colors) or ANSI code
@@ -127,6 +136,8 @@ nnoremap <leader>g :Goyo<cr>
 
 noremap <c-l> zz
 inoremap <c-l> <c-o>zz
+
+nnoremap <leader>o :botright vnew %:h/notes.org<cr>
 " }}}
 
 " {{{ GUI Options
