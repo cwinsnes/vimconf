@@ -11,6 +11,7 @@ Plug 'tpope/vim-eunuch'       " Enables syntactic sugar for several unix+vim com
 Plug 'tpope/vim-rsi'          " Add support for several emacsy movements
 Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
+Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
 
 Plug 'ervandew/supertab'  " Make tab sane
 
@@ -99,6 +100,7 @@ nnoremap <tab> za
 "{{{ NVim settings
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
+    set wildoptions+=pum
 endif
 "}}}
 
@@ -138,6 +140,11 @@ noremap <c-l> zz
 inoremap <c-l> <c-o>zz
 
 nnoremap <leader>o :botright vnew %:h/notes.org<cr>
+
+nnoremap <leader>e :e %:p:h/
+
+nnoremap <leader>m :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
+nnoremap <leader>n :nohlsearch<cr>
 " }}}
 
 " {{{ GUI Options
@@ -150,6 +157,8 @@ colorscheme gruvbox
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
 highlight TabLineSel ctermfg=red ctermbg=black
+highlight Search ctermbg=red ctermfg=white guibg=red guifg=white
+highlight IncSearch ctermbg=red ctermfg=blue guibg=red guifg=blue
 " }}}
 
 " {{{ Language specific options
