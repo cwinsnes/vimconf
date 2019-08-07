@@ -12,6 +12,7 @@ Plug 'tpope/vim-rsi'          " Add support for several emacsy movements
 Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
 Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
+Plug 'tpope/vim-unimpaired'   " Paired mappings
 
 Plug 'ervandew/supertab'  " Make tab sane
 
