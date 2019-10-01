@@ -9,6 +9,7 @@ Plug 'tpope/vim-dispatch'     " Enables easier compiler switching
 Plug 'tpope/vim-fugitive'     " Git wrapper
 Plug 'tpope/vim-eunuch'       " Enables syntactic sugar for several unix+vim commands
 Plug 'tpope/vim-rsi'          " Add support for several emacsy movements
+Plug 'tpope/vim-commentary'   " gc for toggling line comment
 Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
 Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
@@ -45,15 +46,17 @@ call plug#end()
 " {{{ Basic vim settings
 set showcmd
 set scrolloff=5
-let mapleader = " "
-let maplocalleader = " "
 set tabstop=4 softtabstop=0 shiftwidth=4 expandtab smarttab
 set autoindent
 set modeline
 set modelines=3
 set incsearch
 set hidden
+set ignorecase
+set smartcase
 nnoremap Q <nop> 
+let mapleader = " "
+let maplocalleader = " "
 
 " {{{ Disaster recovery
 if !isdirectory($HOME . "/.vim/backupdir")
@@ -142,7 +145,10 @@ inoremap <c-l> <c-o>zz
 
 nnoremap <leader>o :botright vnew %:h/notes.org<cr>
 
+" Opening a file with the same path header as the current file
 nnoremap <leader>e :e %:p:h/
+" This one requires tpope vim-commentary! Comments/uncomments the current line
+nnoremap <leader>c :Comment<cr>
 
 nnoremap <leader>m :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
 nnoremap <leader>n :nohlsearch<cr>
