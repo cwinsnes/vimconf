@@ -155,7 +155,7 @@ nnoremap <leader>n :nohlsearch<cr>
 " }}}
 
 " {{{ GUI Options
-" Note: most settings are set in gvimrc instead
+" Note: Some settings might be set in gvimrc instead
 set noerrorbells visualbell t_vb=
 
 set background=dark
@@ -166,6 +166,14 @@ highlight TabLine ctermfg=black ctermbg=blue
 highlight TabLineSel ctermfg=red ctermbg=black
 highlight Search ctermbg=red ctermfg=white guibg=red guifg=white
 highlight IncSearch ctermbg=red ctermfg=blue guibg=red guifg=blue
+
+if exists('$TMUX')
+  let &t_SI = "\ePtmux;\e\e[5 q\e\\"
+  let &t_EI = "\ePtmux;\e\e[2 q\e\\"
+else
+  let &t_SI = "\e[5 q"
+  let &t_EI = "\e[2 q"
+endif
 " }}}
 
 " {{{ Language specific options
