@@ -62,6 +62,7 @@ let maplocalleader = " "
 if !isdirectory($HOME . "/.vim/backupdir")
     call mkdir($HOME . "/.vim/backupdir", "p")
 endif
+set backspace=2 " Set backspace behaviour here because OS X is stupid...
 set backup
 set backupdir=~/.vim/backupdir//
 set backupskip=/tmp/* " Don't back up /tmp files
