@@ -150,6 +150,7 @@ nnoremap <leader>o :botright vnew %:h/notes.org<cr>
 nnoremap <leader>e :e %:p:h/
 " This one requires tpope vim-commentary! Comments/uncomments the current line
 nnoremap <leader>c :Comment<cr>
+nnoremap <leader>b :b#<cr>
 
 nnoremap <leader>m :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
 nnoremap <leader>n :nohlsearch<cr>
