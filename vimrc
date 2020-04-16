@@ -18,6 +18,8 @@ Plug 'tpope/vim-unimpaired'   " Paired mappings
 Plug 'ervandew/supertab'  " Make tab sane
 
 Plug 'scrooloose/nerdtree' " Yes, netrw exists but it is worse by far
+
+Plug 'dense-analysis/ale' " Asynch linting engine for most languages
 " }}}
 
 " {{{ Python plugins
@@ -135,8 +137,17 @@ let g:limelight_eop = '\ze\n^\s'
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
 " }}}
+" {{{ ALE
+nmap <C-k> <Plug>(ale_previous_wrap)
+nmap <C-j> <Plug>(ale_next_wrap)
+let g:ale_python_pylint_executable = 'python3' 
+
 " }}}
-"
+" {{{ Vim-commentary
+nnoremap <leader>c :Comment<cr>
+" }}}
+" }}}
+
 " {{{ Keybindings
 nnoremap <leader>w :w<cr>
 nnoremap <leader>g :Goyo<cr>
@@ -148,8 +159,6 @@ nnoremap <leader>o :botright vnew %:h/notes.org<cr>
 
 " Opening a file with the same path header as the current file
 nnoremap <leader>e :e %:p:h/
-" This one requires tpope vim-commentary! Comments/uncomments the current line
-nnoremap <leader>c :Comment<cr>
 nnoremap <leader>b :b#<cr>
 
 nnoremap <leader>m :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
