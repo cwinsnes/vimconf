@@ -14,17 +14,22 @@ Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
 Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
 Plug 'tpope/vim-unimpaired'   " Paired mappings
-
-Plug 'ervandew/supertab'  " Make tab sane
-
-Plug 'scrooloose/nerdtree' " Yes, netrw exists but it is worse by far
-
-Plug 'dense-analysis/ale' " Asynch linting engine for most languages
 " }}}
 
+" {{{ File system
+Plug 'scrooloose/nerdtree' " Yes, netrw exists but it is worse by far
+Plug 'ctrlpvim/ctrlp.vim'
+" }}}
+
+" {{{ Programming plugins
+Plug 'dense-analysis/ale' " Asynch linting engine for most languages
+Plug 'ycm-core/YouCompleteMe' " Completion engine. Note that this requires to run ./install --all in .vim/plugged/YouCompleteMe
+Plug 'airblade/vim-gitgutter' " Git diff in the gutter
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
+" }}}
+
 " }}}
 
 " {{{ Tags plugins
@@ -38,8 +43,8 @@ Plug 'junegunn/limelight.vim'
 Plug 'jceb/vim-orgmode' " Org mode for vim
 " }}}
 
-" {{{ GUI Plugins
-Plug 'inkarkat/vim-SyntaxRange'
+" {{{ Visual plugins
+Plug 'ryanoasis/vim-devicons' " Add icons to netrw and such
 " }}}
 
 call plug#end()
@@ -56,6 +61,8 @@ set incsearch
 set hidden
 set ignorecase
 set smartcase
+set signcolumn=auto
+set updatetime=100
 nnoremap Q <nop> 
 let mapleader = " "
 let maplocalleader = " "
@@ -146,6 +153,12 @@ let g:ale_python_pylint_executable = 'python3'
 " {{{ Vim-commentary
 nnoremap <leader>c :Comment<cr>
 " }}}
+" {{{ YouCompleteMe
+let g:ycm_autoclose_preview_window_after_insertion = 1
+" }}}
+" {{{ CtrlP
+let g:ctrlp_map = '<c-f>'
+" }}}
 " }}}
 
 " {{{ Keybindings
@@ -187,7 +200,7 @@ else
 endif
 " }}}
 
-" {{{ Language specific options
+" {{{ Language options
 " {{{ Python
 source $HOME/.vim/syntax/python.vim
 " }}}
@@ -195,3 +208,4 @@ source $HOME/.vim/syntax/python.vim
 let g:org_indent = 1
 " }}}
 " }}}
+"

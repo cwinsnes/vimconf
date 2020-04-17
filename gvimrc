@@ -4,6 +4,7 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set guioptions+=c  "Remove popups
 set noerrorbells visualbell t_vb=
+set guifont=Inconsolata\ Nerd\ Font\ 11
 
 " Toggle full screen using F11
 map <silent> <F11>
