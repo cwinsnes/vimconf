@@ -176,6 +176,8 @@ nnoremap <leader>b :b#<cr>
 
 nnoremap <leader>m :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
 nnoremap <leader>n :nohlsearch<cr>
+
+command! ChangeDir :cd %:p:h
 " }}}
 
 " {{{ GUI Options
