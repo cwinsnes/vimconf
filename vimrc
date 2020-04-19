@@ -1,8 +1,13 @@
 " vim: fdm=marker foldenable foldlevel=0 sw=4 ts=4 sts=4 :
+if has("win32") || has("win16")
+    let vimhome = $HOME . "/vimfiles/"
+else
+    let vimhome = $HOME . "/.vim/"
+endif
 
 " {{{ Plugins
 " Requires Vim Plug: https://github.com/junegunn/vim-plug
-call plug#begin('~/.vim/plugged')
+call plug#begin(vimhome . '/plugged')
 
 " {{{ General plugins
 Plug 'tpope/vim-dispatch'     " Enables easier compiler switching
@@ -67,9 +72,10 @@ nnoremap Q <nop>
 let mapleader = " "
 let maplocalleader = " "
 
+
 " {{{ Disaster recovery
-if !isdirectory($HOME . "/.vim/backupdir")
-    call mkdir($HOME . "/.vim/backupdir", "p")
+if !isdirectory(vimhome . "/backupdir")
+    call mkdir(vimhome . "/backupdir", "p")
 endif
 set backspace=2 " Set backspace behaviour here because OS X is stupid...
 set backup
@@ -77,15 +83,15 @@ set backupdir=~/.vim/backupdir//
 set backupskip=/tmp/* " Don't back up /tmp files
 set writebackup
 
-if !isdirectory($HOME . "/.vim/swapdir")
-    call mkdir($HOME . "/.vim/swapdir", "p")
+if !isdirectory(vimhome . "/swapdir")
+    call mkdir(vimhome . "/swapdir", "p")
 endif
 set directory=~/.vim/swapdir//
 " }}}
 " {{{ Persistent undo
 set undofile
-if !isdirectory($HOME . "/.vim/undodir")
-    call mkdir($HOME . "/.vim/undodir", "p")
+if !isdirectory(vimhome . "/undodir")
+    call mkdir(vimhome . "/undodir", "p")
 endif
 set undodir=~/.vim/undodir//"
 " }}}
@@ -204,7 +210,7 @@ endif
 
 " {{{ Language options
 " {{{ Python
-source $HOME/.vim/syntax/python.vim
+execute "source " . vimhome . "/syntax/python.vim"
 " }}}
 " {{{ Org mode
 let g:org_indent = 1
