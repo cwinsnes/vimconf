@@ -28,7 +28,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " {{{ Programming plugins
 Plug 'dense-analysis/ale' " Asynch linting engine for most languages
-Plug 'ycm-core/YouCompleteMe' " Completion engine. Note that this requires to run ./install --all in .vim/plugged/YouCompleteMe
 Plug 'airblade/vim-gitgutter' " Git diff in the gutter
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
@@ -158,9 +157,6 @@ let g:ale_python_pylint_executable = 'python3'
 " }}}
 " {{{ Vim-commentary
 nnoremap <leader>c :Comment<cr>
-" }}}
-" {{{ YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
 " }}}
 " {{{ CtrlP
 let g:ctrlp_map = '<c-f>'
