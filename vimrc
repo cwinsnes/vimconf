@@ -20,6 +20,8 @@ Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
 Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
 Plug 'tpope/vim-unimpaired'   " Paired mappings
+
+Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
 " }}}
 
 " {{{ File system
@@ -162,12 +164,16 @@ nnoremap <leader>c :Comment<cr>
 " }}}
 " {{{ CtrlP
 let g:ctrlp_map = '<c-f>'
+let g:ctrlp_cmd = 'CtrlPMixed'
 " }}}
 " {{{ Rainbow parenthesis
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+" }}}
+" {{{ Quick scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " }}}
 " }}}
 
