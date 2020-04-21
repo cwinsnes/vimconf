@@ -12,6 +12,7 @@ call plug#begin(vimhome . '/plugged')
 " {{{ General plugins
 Plug 'tpope/vim-dispatch'     " Enables easier compiler switching
 Plug 'tpope/vim-fugitive'     " Git wrapper
+Plug 'sodapopcan/vim-twiggy'  " Git branch extension of Fugitive
 Plug 'tpope/vim-eunuch'       " Enables syntactic sugar for several unix+vim commands
 Plug 'tpope/vim-rsi'          " Add support for several emacsy movements
 Plug 'tpope/vim-commentary'   " gc for toggling line comment
@@ -49,6 +50,7 @@ Plug 'jceb/vim-orgmode' " Org mode for vim
 
 " {{{ Visual plugins
 Plug 'ryanoasis/vim-devicons' " Add icons to netrw and such
+Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
 " }}}
 
 call plug#end()
@@ -160,6 +162,12 @@ nnoremap <leader>c :Comment<cr>
 " }}}
 " {{{ CtrlP
 let g:ctrlp_map = '<c-f>'
+" }}}
+" {{{ Rainbow parenthesis
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 " }}}
 " }}}
 

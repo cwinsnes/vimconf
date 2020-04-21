@@ -5,10 +5,10 @@ set guioptions-=L  "remove left-hand scroll bar
 set guioptions+=c  "Remove popups
 set noerrorbells visualbell t_vb=
 if has('unix')
-    set guifont=Inconsolata\ Nerd\ Font\ 11
+    set guifont=ProggyCleanTT\ Nerd\ Font\ 12
 endif
 if has('macunix')
-    set guifont=Inconsolata\ Nerd\ Font:h13
+    set guifont=ProggyCleanTT\ Nerd\ Font:h15
 endif
 
 " Toggle full screen using F11
