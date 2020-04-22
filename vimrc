@@ -51,8 +51,9 @@ Plug 'jceb/vim-orgmode' " Org mode for vim
 " }}}
 
 " {{{ Visual plugins
-Plug 'ryanoasis/vim-devicons' " Add icons to netrw and such
+Plug 'ryanoasis/vim-devicons' " Add icons to netrw and such. Requires a compatible Nerd Font.
 Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
+Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
 " }}}
 
 call plug#end()
@@ -201,6 +202,7 @@ command! ChangeDir :cd %:p:h
 set noerrorbells visualbell t_vb=
 set background=dark
 set cursorline
+set nocursorcolumn
 colorscheme gruvbox
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
