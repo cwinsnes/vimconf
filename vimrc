@@ -199,8 +199,8 @@ command! ChangeDir :cd %:p:h
 " {{{ GUI Options
 " Note: Some settings might be set in gvimrc instead
 set noerrorbells visualbell t_vb=
-
 set background=dark
+set cursorline
 colorscheme gruvbox
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
