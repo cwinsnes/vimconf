@@ -208,8 +208,6 @@ colorscheme gruvbox
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
 highlight TabLineSel ctermfg=red ctermbg=black
-highlight Search ctermbg=red ctermfg=white guibg=red guifg=white
-highlight IncSearch ctermbg=red ctermfg=blue guibg=red guifg=blue
 
 if exists('$TMUX')
   let &t_SI = "\ePtmux;\e\e[5 q\e\\"
