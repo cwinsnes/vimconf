@@ -32,6 +32,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " {{{ Programming plugins
 Plug 'dense-analysis/ale' " Asynch linting engine for most languages
 Plug 'airblade/vim-gitgutter' " Git diff in the gutter
+Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
