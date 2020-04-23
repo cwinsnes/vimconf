@@ -22,6 +22,8 @@ Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
 Plug 'tpope/vim-unimpaired'   " Paired mappings
 
 Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
+
+Plug 'RRethy/vim-illuminate'  " Highlight instances of the same word
 " }}}
 
 " {{{ File system
@@ -33,6 +35,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale' " Asynch linting engine for most languages
 Plug 'airblade/vim-gitgutter' " Git diff in the gutter
 Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
+Plug 'sheerun/vim-polyglot' " Syntax highlighting for tons of languages
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!

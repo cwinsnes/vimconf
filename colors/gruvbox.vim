@@ -5,6 +5,9 @@
 " Source: https://github.com/morhetz/gruvbox
 " Last Modified: 12 Aug 2017
 " -----------------------------------------------------------------------------
+"  NOTE: This file has been modified to my personal preferences.
+"  Use the original gruvbox from morhetz for the real thing
+"  - cwinsnes
 
 " Supporting code -------------------------------------------------------------
 " Initialisation: {{{
@@ -594,7 +597,7 @@ hi! link Keyword GruvboxRed
 " Variable name
 hi! link Identifier GruvboxBlue
 " Function name
-hi! link Function GruvboxGreenBold
+hi! link Function GruvboxGreen
 
 " Generic preprocessor
 hi! link PreProc GruvboxAqua
