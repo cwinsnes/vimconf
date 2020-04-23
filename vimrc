@@ -207,7 +207,7 @@ set noerrorbells visualbell t_vb=
 set background=dark
 set cursorline
 set nocursorcolumn
-colorscheme gruvbox
+colorscheme badwolf
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
