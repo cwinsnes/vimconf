@@ -161,6 +161,7 @@ let g:limelight_priority = -1
 " {{{ ALE
 nmap <C-k> <Plug>(ale_previous_wrap)
 nmap <C-j> <Plug>(ale_next_wrap)
+                    
 let g:ale_python_pylint_executable = 'python3' 
 
 " }}}
@@ -205,7 +206,7 @@ command! ChangeDir :cd %:p:h
 " Note: Some settings might be set in gvimrc instead
 set noerrorbells visualbell t_vb=
 set background=dark
-set cursorline
+set nocursorline
 set nocursorcolumn
 colorscheme badwolf
 " Set the colors of the terminal tab line
