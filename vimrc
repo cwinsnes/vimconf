@@ -181,6 +181,9 @@ au Syntax * RainbowParenthesesLoadBraces
 " {{{ Quick scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " }}}
+" {{{ Illuminate
+hi link illuminatedWord ToolbarLine
+" }}}
 " }}}
 
 " {{{ Keybindings
