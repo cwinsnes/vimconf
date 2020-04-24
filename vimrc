@@ -24,6 +24,8 @@ Plug 'tpope/vim-unimpaired'   " Paired mappings
 Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
 
 Plug 'RRethy/vim-illuminate'  " Highlight instances of the same word
+
+Plug 'cwinsnes/vim-spotlight' " Highlight current line upon buffer switch
 " }}}
 
 " {{{ File system
@@ -36,6 +38,8 @@ Plug 'dense-analysis/ale' " Asynch linting engine for most languages
 Plug 'airblade/vim-gitgutter' " Git diff in the gutter
 Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
 Plug 'sheerun/vim-polyglot' " Syntax highlighting for tons of languages
+
+Plug 'plasticboy/vim-markdown' " Needed for expanded functionality in markdown
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
@@ -184,6 +188,17 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " {{{ Illuminate
 hi link illuminatedWord ToolbarLine
 " }}}
+" {{{ Spotlight
+let g:SpotlightBlacklist=['nerdtree', 'twiggy']
+" }}}
+" {{{ Polyglot
+" vim-markdown loaded by polyglot causes some bugs compared to straight
+" loading vim-markdown
+let g:polyglot_disabled = ['md', 'markdown']
+" }}}
+" {{{ Markdown
+let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript', 'py=python', 'python=python', 'c=c', 'c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
+" }}}
 " }}}
 
 " {{{ Keybindings
@@ -216,6 +231,7 @@ colorscheme badwolf
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
 highlight TabLineSel ctermfg=red ctermbg=black
+syntax on
 
 if exists('$TMUX')
   let &t_SI = "\ePtmux;\e\e[5 q\e\\"
@@ -234,4 +250,4 @@ execute "source " . vimhome . "/syntax/python.vim"
 let g:org_indent = 1
 " }}}
 " }}}
-"
+
