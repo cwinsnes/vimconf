@@ -25,6 +25,8 @@ Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
 
 Plug 'RRethy/vim-illuminate'  " Highlight instances of the same word
 
+Plug 'christoomey/vim-tmux-navigator' "Interact with tmux. Requires tmux config as well!
+
 Plug 'cwinsnes/vim-spotlight' " Highlight current line upon buffer switch
 " }}}
 
@@ -163,8 +165,8 @@ let g:limelight_eop = '\ze\n^\s'
 let g:limelight_priority = -1
 " }}}
 " {{{ ALE
-nmap <C-k> <Plug>(ale_previous_wrap)
-nmap <C-j> <Plug>(ale_next_wrap)
+nmap <leader>k <Plug>(ale_previous_wrap)
+nmap <leader>j <Plug>(ale_next_wrap)
                     
 let g:ale_python_pylint_executable = 'python3' 
 
@@ -189,7 +191,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 hi link illuminatedWord ToolbarLine
 " }}}
 " {{{ Spotlight
-let g:SpotlightBlacklist=['nerdtree', 'twiggy']
+let g:SpotlightBlacklist=['nerdtree', 'twiggy', 'help']
 " }}}
 " {{{ Polyglot
 " vim-markdown loaded by polyglot causes some bugs compared to straight
@@ -205,7 +207,7 @@ let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript',
 nnoremap <leader>w :w<cr>
 nnoremap <leader>g :Goyo<cr>
 
-noremap <c-l> zz
+noremap <leader>l zz
 inoremap <c-l> <c-o>zz
 
 nnoremap <leader>o :botright vnew %:h/notes.org<cr>
