@@ -82,6 +82,7 @@ set ignorecase
 set smartcase
 set signcolumn=auto
 set updatetime=100
+set conceallevel=0
 nnoremap Q <nop> 
 let mapleader = " "
 let maplocalleader = " "
