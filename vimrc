@@ -39,9 +39,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale' " Asynch linting engine for most languages
 Plug 'airblade/vim-gitgutter' " Git diff in the gutter
 Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
-Plug 'sheerun/vim-polyglot' " Syntax highlighting for tons of languages
 
+Plug 'pangloss/vim-javascript'
+Plug 'lervag/vimtex'
 Plug 'plasticboy/vim-markdown' " Needed for expanded functionality in markdown
+
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
@@ -54,10 +56,8 @@ Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
 " }}}
 
 " {{{ Mode Plugins
-Plug 'junegunn/goyo.vim' " Hyperfocus mode. Combine with limelight
-Plug 'junegunn/limelight.vim'
-
 Plug 'jceb/vim-orgmode' " Org mode for vim
+Plug 'inkarkat/vim-SyntaxRange'
 " }}}
 
 " {{{ Visual plugins
@@ -112,6 +112,7 @@ set undodir=~/.vim/undodir//"
 " }}}
 " {{{ File finding
 set path+=**
+set wildignore+=**/node_modules/**
 set wildmenu
 " }}}
 " {{{ File browsing
@@ -194,13 +195,11 @@ hi link illuminatedWord ToolbarLine
 " {{{ Spotlight
 let g:SpotlightBlacklist=['nerdtree', 'twiggy', 'help']
 " }}}
-" {{{ Polyglot
-" vim-markdown loaded by polyglot causes some bugs compared to straight
-" loading vim-markdown
-let g:polyglot_disabled = ['md', 'markdown']
-" }}}
 " {{{ Markdown
 let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript', 'py=python', 'python=python', 'c=c', 'c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
+" }}}
+" {{{ VimTex
+let g:vimtex_fold_enabled=1
 " }}}
 " }}}
 
