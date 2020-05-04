@@ -55,11 +55,6 @@ Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
 Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
 " }}}
 
-" {{{ Mode Plugins
-Plug 'jceb/vim-orgmode' " Org mode for vim
-Plug 'inkarkat/vim-SyntaxRange'
-" }}}
-
 " {{{ Visual plugins
 Plug 'ryanoasis/vim-devicons' " Add icons to netrw and such. Requires a compatible Nerd Font.
 Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
@@ -131,6 +126,12 @@ set foldlevel=2
 set nofoldenable
 nnoremap <tab> za
 " }}}
+" {{{ Note taking
+" <leader>o opens a notes.org file in this directory, defined later.
+if !isdirectory($HOME . "/notes")
+    call mkdir($HOME . "/notes", "p")
+endif
+" }}}
 " }}}
 
 "{{{ NVim settings
@@ -196,6 +197,7 @@ hi link illuminatedWord ToolbarLine
 let g:SpotlightBlacklist=['nerdtree', 'twiggy', 'help']
 " }}}
 " {{{ Markdown
+let g:vim_markdown_conceal = 0
 let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript', 'py=python', 'python=python', 'c=c', 'c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
 " }}}
 " {{{ VimTex
@@ -210,7 +212,7 @@ nnoremap <leader>g :Goyo<cr>
 noremap <leader>l zz
 inoremap <c-l> <c-o>zz
 
-nnoremap <leader>o :botright vnew %:h/notes.org<cr>
+nnoremap <leader>o :botright vnew $HOME/notes/notes.md<cr>
 
 " Opening a file with the same path header as the current file
 nnoremap <leader>e :e %:p:h/
@@ -247,9 +249,6 @@ endif
 " {{{ Language options
 " {{{ Python
 execute "source " . vimhome . "/syntax/python.vim"
-" }}}
-" {{{ Org mode
-let g:org_indent = 1
 " }}}
 " }}}
 
