@@ -230,6 +230,7 @@ set noerrorbells visualbell t_vb=
 set background=dark
 set nocursorline
 set nocursorcolumn
+set ruler
 colorscheme badwolf
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
