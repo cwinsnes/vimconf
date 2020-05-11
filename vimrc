@@ -31,7 +31,6 @@ Plug 'cwinsnes/vim-spotlight' " Highlight current line upon buffer switch
 " }}}
 
 " {{{ File system
-Plug 'scrooloose/nerdtree' " Yes, netrw exists but it is worse by far
 Plug 'ctrlpvim/ctrlp.vim'
 " }}}
 
@@ -56,7 +55,6 @@ Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
 " }}}
 
 " {{{ Visual plugins
-Plug 'ryanoasis/vim-devicons' " Add icons to netrw and such. Requires a compatible Nerd Font.
 Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
 Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
 " }}}
@@ -112,7 +110,7 @@ set wildmenu
 " }}}
 " {{{ File browsing
 let g:netrw_banner=0        " disable annoying banner
-let g:netrw_browse_split=4  " open in prior window
+let g:netrw_browse_split=0  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
@@ -194,7 +192,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 hi link illuminatedWord ToolbarLine
 " }}}
 " {{{ Spotlight
-let g:SpotlightBlacklist=['nerdtree', 'twiggy', 'help']
+let g:SpotlightBlacklist=['twiggy', 'help']
 " }}}
 " {{{ Markdown
 let g:vim_markdown_conceal = 0
