@@ -43,6 +43,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'lervag/vimtex'
 Plug 'plasticboy/vim-markdown' " Needed for expanded functionality in markdown
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
@@ -200,6 +203,7 @@ let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript',
 " }}}
 " {{{ VimTex
 let g:vimtex_fold_enabled=1
+let g:tex_flavor = 'latex'
 " }}}
 " }}}
 
