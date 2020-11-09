@@ -25,7 +25,7 @@ Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
 
 Plug 'RRethy/vim-illuminate'  " Highlight instances of the same word
 
-Plug 'christoomey/vim-tmux-navigator' "Interact with tmux. Requires tmux config as well!
+Plug 'vimwiki/vimwiki', {'branch': 'dev'}    " Personal wiki in vim
 
 Plug 'cwinsnes/vim-spotlight' " Highlight current line upon buffer switch
 " }}}
@@ -79,7 +79,8 @@ set ignorecase
 set smartcase
 set signcolumn=auto
 set updatetime=100
-set conceallevel=0
+set conceallevel=2
+set concealcursor=
 nnoremap Q <nop> 
 let mapleader = " "
 let maplocalleader = " "
@@ -130,8 +131,8 @@ nnoremap <tab> za
 " }}}
 " {{{ Note taking
 " <leader>o opens a notes.org file in this directory, defined later.
-if !isdirectory($HOME . "/notes")
-    call mkdir($HOME . "/notes", "p")
+if !isdirectory($HOME . "/org")
+    call mkdir($HOME . "/org", "p")
 endif
 " }}}
 " }}}
@@ -199,8 +200,12 @@ hi link illuminatedWord ToolbarLine
 let g:SpotlightBlacklist=['twiggy', 'help']
 " }}}
 " {{{ Markdown
-let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal = 1
 let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript', 'py=python', 'python=python', 'c=c', 'c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
+" }}}
+" {{{ VimWiki
+let g:vimwiki_list = [{'path': '~/org/', 'path_html': '~/org/html/'}]
+let g:vimwiki_hl_headers = 1
 " }}}
 " {{{ VimTex
 let g:vimtex_fold_enabled=1
@@ -212,13 +217,12 @@ let g:black_linelength = 88
 " }}}
 
 " {{{ Keybindings
-nnoremap <leader>w :w<cr>
-nnoremap <leader>g :Goyo<cr>
+nnoremap <leader>s :w<cr>
 
 noremap <leader>l zz
 inoremap <c-l> <c-o>zz
 
-nnoremap <leader>o :botright vnew $HOME/notes/notes.md<cr>
+nnoremap <leader>o :botright vnew $HOME/org/notes.md<cr>
 
 " Opening a file with the same path header as the current file
 nnoremap <leader>e :e %:p:h/
