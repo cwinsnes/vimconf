@@ -49,6 +49,7 @@ Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
+Plug 'psf/black', { 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
 " }}}
 
 " }}}
@@ -183,10 +184,10 @@ let g:ctrlp_map = '<c-f>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 " }}}
 " {{{ Rainbow parenthesis
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
 " }}}
 " {{{ Quick scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -204,6 +205,9 @@ let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript',
 " {{{ VimTex
 let g:vimtex_fold_enabled=1
 let g:tex_flavor = 'latex'
+" }}}
+" {{{ Black
+let g:black_linelength = 88
 " }}}
 " }}}
 
@@ -233,7 +237,7 @@ set background=dark
 set nocursorline
 set nocursorcolumn
 set ruler
-colorscheme badwolf
+colorscheme gruvbox
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
@@ -251,6 +255,7 @@ endif
 
 " {{{ Language options
 " {{{ Python
+autocmd BufWrite *.py Black
 execute "source " . vimhome . "/syntax/python.vim"
 " }}}
 " }}}
