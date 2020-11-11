@@ -85,6 +85,11 @@ nnoremap Q <nop>
 let mapleader = " "
 let maplocalleader = " "
 
+" {{{ Bug fixes
+" Stop weird characters showing up due to 'modifyOtherKeys' if present.
+let &t_TI = ""
+let &t_TE = ""
+" }}}
 
 " {{{ Disaster recovery
 if !isdirectory(vimhome . "/backupdir")
