@@ -204,8 +204,10 @@ let g:vim_markdown_conceal = 1
 let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript', 'py=python', 'python=python', 'c=c', 'c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
 " }}}
 " {{{ VimWiki
-let g:vimwiki_list = [{'path': '~/org/', 'path_html': '~/org/html/'}]
 let g:vimwiki_hl_headers = 1
+let wiki = {'path': '~/org/', 'path_html': '~/org/html/'}
+let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'c': 'c', 'rust': 'rust'}
+let g:vimwiki_list = [wiki]
 " }}}
 " {{{ VimTex
 let g:vimtex_fold_enabled=1
