@@ -46,10 +46,21 @@ Plug 'plasticboy/vim-markdown' " Needed for expanded functionality in markdown
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 
+" {{{ Rust plugins
+Plug 'rust-lang/rust.vim'
+" }}}
+
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
 Plug 'psf/black', { 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
+Plug 'cjrh/vim-conda' " Conda envs
+Plug 'vim-python/python-syntax'
+" }}}
+
+" {{{ Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " }}}
 
 " }}}
@@ -128,8 +139,8 @@ let g:netrw_winsize = 25
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 autocmd FileType netrw setl bufhidden=delete " Make netrw not wanna save files
-autocmd FileType netrw nnoremap ? :help netrw-quickmap<cr>
-autocmd FileType netrw nnoremap c :Ntree<cr>
+autocmd FileType netrw nnoremap <buffer> ? :help netrw-quickmap<cr>
+autocmd FileType netrw nnoremap <buffer> c :Ntree<cr>
 " }}}
 " {{{ Code folding
 set foldmethod=syntax
@@ -225,13 +236,61 @@ let g:tex_flavor = 'latex'
 " {{{ Black
 let g:black_linelength = 88
 " }}}
+" {{{ Conda
+let g:conda_startup_msg_suppress = 1
+let g:conda_startup_wrn_suppress = 1
+" }}}
+" {{{ coc.nvim
+" Use tab for completions
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" }}}
+" {{{ Ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-l>"
+" }}}
+" {{{ Python syntax
+let g:python_highlight_all = 1
+" }}}
+" {{{ rust.vim
+let g:rustfmt_autosave = 1
+" }}}
 " }}}
 
 " {{{ Keybindings
 nnoremap <leader>s :w<cr>
 
-noremap <leader>l zz
-inoremap <c-l> <c-o>zz
+noremap <c-l> zz
 
 nnoremap <leader>o :botright vnew $HOME/org/notes.md<cr>
 
