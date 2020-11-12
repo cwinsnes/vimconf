@@ -19,7 +19,7 @@ Plug 'tpope/vim-commentary'   " gc for toggling line comment
 Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
 Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
-Plug 'tpope/vim-unimpaired'   " Paired mappings
+Plug 'tpope/vim-vinegar'      " Make netrw slightly more sensible.
 
 Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
 
@@ -81,6 +81,7 @@ set signcolumn=auto
 set updatetime=100
 set conceallevel=2
 set concealcursor=
+set cmdheight=2
 nnoremap Q <nop> 
 let mapleader = " "
 let maplocalleader = " "
@@ -120,12 +121,15 @@ set wildmenu
 " }}}
 " {{{ File browsing
 let g:netrw_banner=0        " disable annoying banner
-let g:netrw_browse_split=0  " open in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle=3     " tree view
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 autocmd FileType netrw setl bufhidden=delete " Make netrw not wanna save files
+autocmd FileType netrw nnoremap ? :help netrw-quickmap<cr>
+autocmd FileType netrw nnoremap c :Ntree<cr>
 " }}}
 " {{{ Code folding
 set foldmethod=syntax
@@ -237,6 +241,7 @@ nnoremap <leader>b :b#<cr>
 
 nnoremap <leader>m :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
 nnoremap <leader>n :nohlsearch<cr>
+nnoremap <f8> :Vexplore<cr>
 
 command! ChangeDir :cd %:p:h
 " }}}
