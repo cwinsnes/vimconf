@@ -41,10 +41,11 @@ Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
 Plug 'pangloss/vim-javascript'
 Plug 'lervag/vimtex'
 Plug 'plasticboy/vim-markdown' " Needed for expanded functionality in markdown
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fisadev/vim-isort'
+
 
 " {{{ Rust plugins
 Plug 'rust-lang/rust.vim'
@@ -75,6 +76,7 @@ Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
 Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
 Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
 Plug 'nathanaelkane/vim-indent-guides'     " Indentation guides
+Plug 'danilo-augusto/vim-afterglow'
 " }}}
 
 call plug#end()
@@ -161,10 +163,33 @@ endif
 " }}}
 " }}}
 
-"{{{ NVim settings
+"{{{ NVim specific settings
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
     set wildoptions+=pum
+
+    set termguicolors
+
+"{{{ LSP
+lua <<EOF
+require'lspconfig'.pyls.setup{}
+EOF
+
+nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+"}}}
+
+" {{{ Treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
+EOF
+" }}}
 endif
 "}}}
 
@@ -263,40 +288,6 @@ augroup END
 let g:conda_startup_msg_suppress = 1
 let g:conda_startup_wrn_suppress = 1
 " }}}
-" {{{ coc.nvim
-" Use tab for completions
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" }}}
 " {{{ Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
@@ -335,7 +326,7 @@ set background=dark
 set nocursorline
 set nocursorcolumn
 set ruler
-colorscheme gruvbox
+colorscheme afterglow
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
