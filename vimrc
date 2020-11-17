@@ -45,6 +45,7 @@ Plug 'plasticboy/vim-markdown' " Needed for expanded functionality in markdown
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fisadev/vim-isort'
 
 " {{{ Rust plugins
 Plug 'rust-lang/rust.vim'
@@ -56,6 +57,8 @@ Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
 Plug 'psf/black', { 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
 Plug 'cjrh/vim-conda' " Conda envs
 Plug 'vim-python/python-syntax'
+Plug 'jpalardy/vim-slime', { 'for': 'python' }
+Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 " }}}
 
 " {{{ Snippets
@@ -72,6 +75,7 @@ Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
 " {{{ Visual plugins
 Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
 Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
+Plug 'nathanaelkane/vim-indent-guides'     " Indentation guides
 " }}}
 
 call plug#end()
@@ -93,6 +97,7 @@ set updatetime=100
 set conceallevel=2
 set concealcursor=
 set cmdheight=2
+set nolist
 nnoremap Q <nop> 
 let mapleader = " "
 let maplocalleader = " "
@@ -228,6 +233,7 @@ let g:vimwiki_hl_headers = 1
 let wiki = {'path': '~/org/', 'path_html': '~/org/html/'}
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'c': 'c', 'rust': 'rust'}
 let g:vimwiki_list = [wiki]
+let g:vimwiki_folding = 'expr'
 " }}}
 " {{{ VimTex
 let g:vimtex_fold_enabled=1
@@ -235,6 +241,24 @@ let g:tex_flavor = 'latex'
 " }}}
 " {{{ Black
 let g:black_linelength = 88
+" }}}
+" {{{ SLIME
+let g:slime_target = 'tmux'
+let g:slime_python_ipython = 1
+let g:slime_default_config = {
+            \ 'socket_name': get(split($TMUX, ','), 0),
+            \ 'target_pane': '{top-right}' }
+let g:slime_dont_ask_default = 1
+" }}}
+" {{{ iPython cell
+augroup IpythonMappings
+    autocmd!
+    autocmd FileType python nnoremap <buffer> <localleader>rs :SlimeSend1 ipython3 --matplotlib<cr>
+    autocmd FileType python nnoremap <buffer> <localleader>rc :IPythonCellExecuteCell<cr>
+    autocmd FileType python nnoremap <buffer> <localleader>r<cr> :IPythonCellExecuteCellJump<cr>
+    autocmd FileType python nnoremap <buffer> <localleader>rr :IPythonCellRestart<cr>
+    autocmd FileType python nnoremap <buffer> <localleader>rp :IPythonCellRun<cr>
+augroup END
 " }}}
 " {{{ Conda
 let g:conda_startup_msg_suppress = 1
@@ -331,6 +355,7 @@ endif
 " {{{ Language options
 " {{{ Python
 autocmd BufWrite *.py Black
+autocmd BufWrite *.py Isort
 execute "source " . vimhome . "/syntax/python.vim"
 " }}}
 " }}}
