@@ -147,9 +147,12 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-autocmd FileType netrw setl bufhidden=delete " Make netrw not wanna save files
-autocmd FileType netrw nnoremap <buffer> ? :help netrw-quickmap<cr>
-autocmd FileType netrw nnoremap <buffer> c :Ntree<cr>
+augroup NetrwMappings
+    autocmd!
+    autocmd FileType netrw setl bufhidden=delete " Make netrw not wanna save files
+    autocmd FileType netrw nnoremap <buffer> ? :help netrw-quickmap<cr>
+    autocmd FileType netrw nnoremap <buffer> c :Ntree<cr>
+augroup END
 " }}}
 " {{{ Code folding
 set foldmethod=syntax
@@ -319,7 +322,20 @@ nnoremap <leader>b :b#<cr>
 
 nnoremap <leader>m :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
 nnoremap <leader>n :nohlsearch<cr>
-nnoremap <f8> :Vexplore<cr>
+
+function FileDrawer()
+    let tabnum = tabpagenr()
+    let bufnum = bufwinnr('netrwfiledrawer' . '-' . tabnum)
+    if bufnum > 0
+        execute(bufnum . 'wincmd q')
+    else
+        execute('Vexplore')
+        execute('f0')
+        execute('f netrwfiledrawer' . '-' . tabnum)
+    endif
+endfunction
+
+nnoremap <silent> <f8> :call FileDrawer()<cr>
 
 command! ChangeDir :cd %:p:h
 " }}}
