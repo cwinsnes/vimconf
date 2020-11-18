@@ -41,8 +41,10 @@ Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
 Plug 'pangloss/vim-javascript'
 Plug 'lervag/vimtex'
 Plug 'plasticboy/vim-markdown' " Needed for expanded functionality in markdown
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-treesitter/nvim-treesitter'
+if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-treesitter/nvim-treesitter'
+endif
 
 Plug 'fisadev/vim-isort'
 
@@ -76,7 +78,8 @@ Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
 Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
 Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
 Plug 'nathanaelkane/vim-indent-guides'     " Indentation guides
-Plug 'danilo-augusto/vim-afterglow'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'itchyny/lightline.vim'
 " }}}
 
 call plug#end()
@@ -167,19 +170,22 @@ endif
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
     set wildoptions+=pum
-
-    set termguicolors
+endif
+"}}}
 
 "{{{ LSP
+if has('nvim')
 lua <<EOF
 require'lspconfig'.pyls.setup{}
 EOF
 
-nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
-autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+    nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
+    autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+endif
 "}}}
 
 " {{{ Treesitter
+if has('nvim')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -189,9 +195,8 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
-" }}}
 endif
-"}}}
+" }}}
 
 " {{{ Plugin options
 " {{{ LimeLight
@@ -326,7 +331,8 @@ set background=dark
 set nocursorline
 set nocursorcolumn
 set ruler
-colorscheme afterglow
+set termguicolors
+colorscheme nightfly
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
