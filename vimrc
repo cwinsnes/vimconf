@@ -366,8 +366,11 @@ endif
 
 " {{{ Language options
 " {{{ Python
-autocmd BufWrite *.py Black
-autocmd BufWrite *.py Isort
+augroup PythonPreWrite
+    autocmd!
+    autocmd BufWrite *.py Black
+    autocmd BufWrite *.py Isort
+augroup END
 execute "source " . vimhome . "/syntax/python.vim"
 " }}}
 " }}}
