@@ -181,7 +181,6 @@ if has('nvim')
 lua <<EOF
 require'lspconfig'.pyls.setup{}
 EOF
-
     nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
     autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endif
@@ -227,13 +226,6 @@ let g:limelight_eop = '\ze\n^\s'
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
 " }}}
-" {{{ ALE
-nmap <leader>k <Plug>(ale_previous_wrap)
-nmap <leader>j <Plug>(ale_next_wrap)
-                    
-let g:ale_python_pylint_executable = 'python3' 
-
-" }}}
 " {{{ Vim-commentary
 nnoremap <leader>c :Comment<cr>
 " }}}
@@ -266,6 +258,7 @@ let wiki = {'path': '~/org/', 'path_html': '~/org/html/'}
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'c': 'c', 'rust': 'rust'}
 let g:vimwiki_list = [wiki]
 let g:vimwiki_folding = 'expr'
+autocmd FileType vimwiki inoremap <silent><buffer> <C-CR> <Esc>:VimwikiReturn 2 2<CR>
 " }}}
 " {{{ VimTex
 let g:vimtex_fold_enabled=1
@@ -320,8 +313,13 @@ nnoremap <leader>o :botright vnew $HOME/org/notes.md<cr>
 nnoremap <leader>e :e %:p:h/
 nnoremap <leader>b :b#<cr>
 
+" Highlight all instances of current word
 nnoremap <leader>m :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
+" Unhighlight
 nnoremap <leader>n :nohlsearch<cr>
+
+" Generate ctags, in case gutentags hasn't generated them.
+nnoremap <leader>gt :!ctags -R %:p:h<cr>
 
 function FileDrawer()
     let tabnum = tabpagenr()
