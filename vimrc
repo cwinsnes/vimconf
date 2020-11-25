@@ -162,7 +162,6 @@ set foldmethod=syntax
 set foldnestmax=10
 set foldlevel=2
 set nofoldenable
-nnoremap <tab> za
 " }}}
 " {{{ Note taking
 " <leader>o opens a notes.org file in this directory, defined later.
@@ -178,7 +177,6 @@ if has('nvim')
     set wildoptions+=pum
 endif
 "}}}
-
 "{{{ LSP
 if has('nvim')
 lua <<EOF
@@ -188,7 +186,6 @@ EOF
     autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endif
 "}}}
-
 " {{{ Treesitter
 if has('nvim')
 lua <<EOF
@@ -202,7 +199,6 @@ require'nvim-treesitter.configs'.setup {
 EOF
 endif
 " }}}
-
 " {{{ Plugin options
 " {{{ LimeLight
 " Color name (:help cterm-colors) or ANSI code
@@ -293,9 +289,9 @@ let g:conda_startup_msg_suppress = 1
 let g:conda_startup_wrn_suppress = 1
 " }}}
 " {{{ Ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<c-l>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " }}}
 " {{{ Python syntax
 let g:python_highlight_all = 1

@@ -1,0 +1,26 @@
+snippet ifm "ifm" b
+if __name__ == `!p snip.rv = quote_style(snip)`__main__`!p snip.rv = quote_style(snip)`:
+	${1:${VISUAL:main()}}
+endsnippet
+
+snippet main "main" b
+def main():
+	${1:${VISUAL:pass}}
+endsnippet
+
+snippet wo "wo" b
+with open(`!p snip.rv = quote_style(snip)`${1:${VISUAL:file}}`!p snip.rv = quote_style(snip)`, `!p snip.rv = quote_style(snip)`${2:${VISUAL:r}}`!p snip.rv = quote_style(snip)`) as ${3:${VISUAL:file}}:
+	${4:${VISUAL:pass}}
+endsnippet
+
+global !p
+# Copied from vim-snippets.
+SINGLE_QUOTES = "'"
+DOUBLE_QUOTES = '"'
+
+def quote_style(snip):
+	style = snip.opt("g:ultisnips_python_quoting_style", "double")
+	if style == 'single':
+		return SINGLE_QUOTES
+	return DOUBLE_QUOTES
+endglobal

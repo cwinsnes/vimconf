@@ -1,0 +1,16 @@
+global !p
+def randomnum(snip):
+	snip.rv = random.getrandbits(32)
+
+def filename(snip):
+	snip.rv = snip.basename.upper()
+endglobal
+
+snippet header "header guard" b
+#ifndef ${1:`!p filename(snip)`_`!p if not snip.c: randomnum(snip)`_H}
+#define $1
+
+$2
+
+#endif /* end of $1 */
+endsnippet
