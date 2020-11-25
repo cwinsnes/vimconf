@@ -78,8 +78,12 @@ Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
 Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
 Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
 Plug 'nathanaelkane/vim-indent-guides'     " Indentation guides
-Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'itchyny/lightline.vim'
+
+" {{{ Colorschemes
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'joshdick/onedark.vim'
+" }}}
 " }}}
 
 call plug#end()
@@ -246,7 +250,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 hi link illuminatedWord ToolbarLine
 " }}}
 " {{{ Spotlight
-let g:SpotlightBlacklist=['twiggy', 'help']
+let g:SpotlightBlacklist=['twiggy', 'help', 'netrw']
 " }}}
 " {{{ Markdown
 let g:vim_markdown_conceal = 1
@@ -346,7 +350,7 @@ set nocursorline
 set nocursorcolumn
 set ruler
 set termguicolors
-colorscheme nightfly
+colorscheme onedark
 " Set the colors of the terminal tab line
 highlight TabLineFill ctermfg=black ctermbg=black
 highlight TabLine ctermfg=black ctermbg=blue
