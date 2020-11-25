@@ -23,8 +23,6 @@ Plug 'tpope/vim-vinegar'      " Make netrw slightly more sensible.
 
 Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
 
-Plug 'RRethy/vim-illuminate'  " Highlight instances of the same word
-
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}    " Personal wiki in vim
 
 Plug 'cwinsnes/vim-spotlight' " Highlight current line upon buffer switch
@@ -70,8 +68,9 @@ Plug 'honza/vim-snippets'
 
 " }}}
 
-" {{{ Tags plugins
+" {{{ Tags and Marks plugins
 Plug 'ludovicchabant/vim-gutentags'  " Autogeneration of ctags
+Plug 'kshenoy/vim-signature'         " Show marks on the side
 " }}}
 
 " {{{ Visual plugins
