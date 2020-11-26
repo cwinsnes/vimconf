@@ -105,7 +105,7 @@ set conceallevel=2
 set concealcursor=
 set cmdheight=2
 set nolist
-nnoremap Q <nop> 
+nnoremap Q <nop>
 let mapleader = " "
 let maplocalleader = " "
 
@@ -304,6 +304,16 @@ let g:rustfmt_autosave = 1
 let g:indentLine_setConceal = 0
 " }}}
 " }}}
+"{{{ Custom functions
+function! DeleteTS()
+    " Deletes trailing whitespace
+    let l:cursor_pos = getpos('.')
+    keepjumps keeppatterns %s/\s\+$//e
+    call setpos('.', l:cursor_pos)
+endfunction
+
+autocmd BufWritePre * call DeleteTS()
+"}}}
 
 " {{{ Keybindings
 nnoremap <leader>s :w<cr>
