@@ -257,7 +257,12 @@ let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript',
 " }}}
 " {{{ VimWiki
 let g:vimwiki_hl_headers = 1
-let wiki = {'path': '~/org/', 'path_html': '~/org/html/', 'ext': '.wiki', 'css_name': 'style.css'}
+let wiki = {'path': '~/org/', 'path_html': '~/org/html/',
+\           'ext': '.wiki', 'css_name': 'styles/style.css',
+\           'diary_caption_level': -1,
+\           'template_path': '~/org/html/templates',
+\           'template_default': 'default_template',
+\           'template_ext': '.tpl'}
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'c': 'c', 'rust': 'rust'}
 let wiki.index = 'notes'
 let g:vimwiki_list = [wiki]
@@ -324,7 +329,7 @@ nnoremap <leader>s :w<cr>
 
 noremap <c-l> zz
 
-nmap <Leader>o <Plug>VimwikiIndex
+nmap <Leader>o <Plug>VimwikiDiaryIndex
 
 " Opening a file with the same path header as the current file
 nnoremap <leader>e :e %:p:h/
