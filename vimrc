@@ -76,7 +76,7 @@ Plug 'kshenoy/vim-signature'         " Show marks on the side
 " {{{ Visual plugins
 Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
 Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
-Plug 'nathanaelkane/vim-indent-guides'     " Indentation guides
+Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
 
 " {{{ Colorschemes
@@ -253,8 +253,9 @@ let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript',
 " }}}
 " {{{ VimWiki
 let g:vimwiki_hl_headers = 1
-let wiki = {'path': '~/org/', 'path_html': '~/org/html/'}
+let wiki = {'path': '~/org/', 'path_html': '~/org/html/', 'ext': '.wiki'}
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'c': 'c', 'rust': 'rust'}
+let wiki.index = 'notes'
 let g:vimwiki_list = [wiki]
 let g:vimwiki_folding = 'expr'
 autocmd FileType vimwiki inoremap <silent><buffer> <C-CR> <Esc>:VimwikiReturn 2 2<CR>
@@ -299,6 +300,9 @@ let g:python_highlight_all = 1
 " {{{ rust.vim
 let g:rustfmt_autosave = 1
 " }}}
+" {{{ indentguides
+let g:indentLine_setConceal = 0
+" }}}
 " }}}
 
 " {{{ Keybindings
@@ -306,7 +310,7 @@ nnoremap <leader>s :w<cr>
 
 noremap <c-l> zz
 
-nnoremap <leader>o :botright vnew $HOME/org/notes.md<cr>
+nmap <Leader>o <Plug>VimwikiIndex
 
 " Opening a file with the same path header as the current file
 nnoremap <leader>e :e %:p:h/
