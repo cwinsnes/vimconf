@@ -105,6 +105,7 @@ set conceallevel=2
 set concealcursor=
 set cmdheight=2
 set nolist
+let g:vimsyn_embed='lPr'
 nnoremap Q <nop>
 let mapleader = " "
 let maplocalleader = " "
@@ -182,19 +183,22 @@ if has('nvim')
 lua <<EOF
 require'lspconfig'.pyls.setup{}
 EOF
-    nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
-    autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endif
 "}}}
 " {{{ Treesitter
 if has('nvim')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "all", -- "all", "maintained", or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = {},  -- list of language that will be disabled
   },
+  indent = {
+    enable = true,
+  }
 }
 EOF
 endif
@@ -253,7 +257,7 @@ let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript',
 " }}}
 " {{{ VimWiki
 let g:vimwiki_hl_headers = 1
-let wiki = {'path': '~/org/', 'path_html': '~/org/html/', 'ext': '.wiki'}
+let wiki = {'path': '~/org/', 'path_html': '~/org/html/', 'ext': '.wiki', 'css_name': 'style.css'}
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'c': 'c', 'rust': 'rust'}
 let wiki.index = 'notes'
 let g:vimwiki_list = [wiki]
