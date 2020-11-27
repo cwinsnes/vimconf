@@ -287,7 +287,7 @@ let g:slime_dont_ask_default = 1
 " {{{ iPython cell
 augroup IpythonMappings
     autocmd!
-    autocmd FileType python nnoremap <buffer> <localleader>rs :SlimeSend1 ipython3 --matplotlib<cr>
+    autocmd FileType python nnoremap <buffer> <localleader>rs :SlimeSend1 ipython3<cr>
     autocmd FileType python nnoremap <buffer> <localleader>rc :IPythonCellExecuteCell<cr>
     autocmd FileType python nnoremap <buffer> <localleader>r<cr> :IPythonCellExecuteCellJump<cr>
     autocmd FileType python nnoremap <buffer> <localleader>rr :IPythonCellRestart<cr>
