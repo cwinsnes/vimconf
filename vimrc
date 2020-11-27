@@ -80,7 +80,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
 
 " {{{ Colorschemes
-Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'joshdick/onedark.vim'
 " }}}
 " }}}
