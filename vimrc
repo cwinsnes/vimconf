@@ -182,9 +182,12 @@ endif
 if has('nvim')
 lua <<EOF
 require'lspconfig'.pyls.setup{}
+require'lspconfig'.ccls.setup{}
 EOF
 nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
 autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype c setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endif
 "}}}
 " {{{ Treesitter
