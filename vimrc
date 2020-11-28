@@ -28,10 +28,6 @@ Plug 'vimwiki/vimwiki', {'branch': 'dev'}    " Personal wiki in vim
 Plug 'cwinsnes/vim-spotlight' " Highlight current line upon buffer switch
 " }}}
 
-" {{{ File system
-Plug 'ctrlpvim/ctrlp.vim'
-" }}}
-
 " {{{ Programming plugins
 Plug 'airblade/vim-gitgutter' " Git diff in the gutter
 Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
@@ -44,9 +40,6 @@ if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter'
 endif
 
-Plug 'fisadev/vim-isort'
-
-
 " {{{ Rust plugins
 Plug 'rust-lang/rust.vim'
 " }}}
@@ -55,7 +48,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
 Plug 'psf/black', { 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
-Plug 'cjrh/vim-conda' " Conda envs
+Plug 'fisadev/vim-isort'
 Plug 'vim-python/python-syntax'
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
@@ -74,7 +67,6 @@ Plug 'kshenoy/vim-signature'         " Show marks on the side
 " }}}
 
 " {{{ Visual plugins
-Plug 'kien/rainbow_parentheses.vim' " Rainbow parenthesis for clearer surrounds
 Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
@@ -90,7 +82,7 @@ call plug#end()
 " {{{ Basic vim settings
 set showcmd
 set scrolloff=5
-set tabstop=4 softtabstop=0 shiftwidth=4 expandtab smarttab
+set tabstop=4 softtabstop=0 shiftwidth=4 expandtab cindent
 set autoindent
 set modeline
 set modelines=3
@@ -234,16 +226,6 @@ let g:limelight_priority = -1
 " {{{ Vim-commentary
 nnoremap <leader>c :Comment<cr>
 " }}}
-" {{{ CtrlP
-let g:ctrlp_map = '<c-f>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-" }}}
-" {{{ Rainbow parenthesis
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
-" }}}
 " {{{ Quick scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " }}}
@@ -313,6 +295,7 @@ let g:rustfmt_autosave = 1
 " }}}
 " {{{ indentguides
 let g:indentLine_setConceal = 0
+let g:indentLine_char = '┊'
 " }}}
 " }}}
 "{{{ Custom functions
