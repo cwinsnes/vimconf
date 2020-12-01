@@ -10,7 +10,7 @@ endif
 call plug#begin(vimhome . '/plugged')
 
 " {{{ General plugins
-Plug 'tpope/vim-dispatch'     " Enables easier compiler switching
+Plug 'tpope/vim-dispatch', { 'on': 'Dispatch' } " Enables easier compiler switching
 Plug 'tpope/vim-fugitive'     " Git wrapper
 Plug 'sodapopcan/vim-twiggy'  " Git branch extension of Fugitive
 Plug 'tpope/vim-eunuch'       " Enables syntactic sugar for several unix+vim commands
@@ -46,9 +46,9 @@ Plug 'rust-lang/rust.vim'
 
 " {{{ Python plugins
 Plug 'tmhedberg/SimpylFold'          " Better Python folding
-Plug 'jeetsukumaran/vim-pythonsense' " Python word objects!
-Plug 'psf/black', { 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
-Plug 'fisadev/vim-isort'
+Plug 'jeetsukumaran/vim-pythonsense', { 'for': 'python' } " Python word objects!
+Plug 'psf/black', { 'on': 'Black', 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
+Plug 'fisadev/vim-isort', { 'on': 'Isort' }
 Plug 'vim-python/python-syntax'
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
