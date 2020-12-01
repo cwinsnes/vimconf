@@ -252,6 +252,27 @@ let wiki.index = 'notes'
 let g:vimwiki_list = [wiki]
 let g:vimwiki_folding = 'expr'
 autocmd FileType vimwiki inoremap <silent><buffer> <C-CR> <Esc>:VimwikiReturn 2 2<CR>
+
+" Use local links instead when exporting to HTML.
+" Also copies the file to the correct place.
+function! VimwikiLinkConverter(link, source_wiki_file, target_html_file)
+    if a:link =~# '^local:' || a:link =~# '^file'
+        let link_infos = vimwiki#base#resolve_link(a:link)
+        let html_include_folder = fnamemodify(a:target_html_file, ':h') . '/includes/'
+        if !isdirectory(html_include_folder)
+            call mkdir(html_include_folder, "p")
+        endif
+        let target_file = html_include_folder . fnamemodify(link_infos.filename, ':t')
+        call system('cp ' . fnameescape(link_infos.filename) .
+                    \ ' ' . fnameescape(target_file))
+        echo target_file
+        return target_file
+        let relative_link =
+                    \ fnamemodify(a:target_html_file, ':h') . '/' . html_link
+        return html_link
+    endif
+    return ''
+endfunction
 " }}}
 " {{{ VimTex
 let g:vimtex_fold_enabled=1
