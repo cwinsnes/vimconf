@@ -314,7 +314,8 @@ nnoremap <leader>s :w<cr>
 
 noremap <c-l> zz
 
-nmap <Leader>o <Plug>VimwikiDiaryIndex
+nmap <leader>o <Plug>VimwikiMakeDiaryNote
+nmap <leader><leader>o <Plug>VimwikiDiaryIndex
 
 " Opening a file with the same path header as the current file
 nnoremap <leader>e :e %:p:h/
