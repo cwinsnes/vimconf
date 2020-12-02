@@ -12,7 +12,7 @@ call plug#begin(vimhome . '/plugged')
 " {{{ General plugins
 Plug 'tpope/vim-dispatch', { 'on': 'Dispatch' } " Enables easier compiler switching
 Plug 'tpope/vim-fugitive'     " Git wrapper
-Plug 'sodapopcan/vim-twiggy'  " Git branch extension of Fugitive
+Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' } " Git branch extension of Fugitive
 Plug 'tpope/vim-eunuch'       " Enables syntactic sugar for several unix+vim commands
 Plug 'tpope/vim-rsi'          " Add support for several emacsy movements
 Plug 'tpope/vim-commentary'   " gc for toggling line comment
@@ -20,6 +20,7 @@ Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
 Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
 Plug 'tpope/vim-vinegar'      " Make netrw slightly more sensible.
+Plug 'tpop/vim-unimpaired'    " Paired bindings
 
 Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
 
@@ -45,11 +46,11 @@ Plug 'rust-lang/rust.vim'
 " }}}
 
 " {{{ Python plugins
-Plug 'tmhedberg/SimpylFold'          " Better Python folding
+Plug 'tmhedberg/SimpylFold', { 'for': 'python' } " Better Python folding
 Plug 'jeetsukumaran/vim-pythonsense', { 'for': 'python' } " Python word objects!
 Plug 'psf/black', { 'on': 'Black', 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
 Plug 'fisadev/vim-isort', { 'on': 'Isort' }
-Plug 'vim-python/python-syntax'
+Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 " }}}
@@ -174,11 +175,11 @@ if has('nvim')
 lua <<EOF
 require'lspconfig'.pyls.setup{}
 require'lspconfig'.ccls.setup{}
+require'lspconfig'.jdtls.setup{}
+require'lspconfig'.rls.setup{}
 EOF
 nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
-autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd Filetype c setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd Filetype cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype python,c,cpp,rust,java setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endif
 "}}}
 " {{{ Treesitter
