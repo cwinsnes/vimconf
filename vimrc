@@ -173,12 +173,15 @@ endif
 "{{{ LSP
 if has('nvim')
 lua <<EOF
-require'lspconfig'.pyls.setup{}
+require'lspconfig'.pyls.setup{settings={pyls={plugins={pydocstyle={enabled=true}}}}}
 require'lspconfig'.ccls.setup{}
 require'lspconfig'.jdtls.setup{}
 require'lspconfig'.rls.setup{}
 EOF
-nnoremap <silent> K <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<cr>
+nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
+nnoremap <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+nnoremap <C-m> <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
 autocmd Filetype python,c,cpp,rust,java setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endif
 "}}}
