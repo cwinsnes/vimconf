@@ -20,11 +20,11 @@ Plug 'tpope/vim-speeddating'  " Make C-a and similar work with dates
 Plug 'tpope/vim-surround'     " Makes changing surrounding quotes and such easy
 Plug 'tpope/vim-repeat'       " Allows for repetition of plugin maps
 Plug 'tpope/vim-vinegar'      " Make netrw slightly more sensible.
-Plug 'tpop/vim-unimpaired'    " Paired bindings
+Plug 'tpope/vim-unimpaired'    " Paired bindings
 
 Plug 'unblevable/quick-scope' " Highlight characters for f and t and such
 
-Plug 'vimwiki/vimwiki', {'branch': 'dev'}    " Personal wiki in vim
+" Plug 'vimwiki/vimwiki', {'branch': 'dev'}    " Personal wiki in vim
 
 Plug 'cwinsnes/vim-spotlight' " Highlight current line upon buffer switch
 " }}}
@@ -75,6 +75,10 @@ Plug 'itchyny/lightline.vim'
 " {{{ Colorschemes
 Plug 'joshdick/onedark.vim'
 " }}}
+" }}}
+
+" {{{ Note taking
+Plug 'fmoralesc/vim-pad'
 " }}}
 
 call plug#end()
@@ -172,12 +176,14 @@ endif
 "}}}
 "{{{ LSP
 if has('nvim')
-lua <<EOF
-require'lspconfig'.pyls.setup{settings={pyls={plugins={pydocstyle={enabled=true}}}}}
+lua <<ENDLUA
+require'lspconfig'.pyls.setup{settings={pyls={plugins={pydocstyle={enabled=true}}
+}}
+}
 require'lspconfig'.ccls.setup{}
 require'lspconfig'.jdtls.setup{}
 require'lspconfig'.rls.setup{}
-EOF
+ENDLUA
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
@@ -241,42 +247,20 @@ let g:SpotlightBlacklist=['twiggy', 'help', 'netrw']
 " }}}
 " {{{ Markdown
 let g:vim_markdown_conceal = 1
+let g:vim_markdown_math = 1
 let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript', 'py=python', 'python=python', 'c=c', 'c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
 " }}}
-" {{{ VimWiki
-let g:vimwiki_hl_headers = 1
-let wiki = {'path': '~/org/', 'path_html': '~/org/html/',
-\           'ext': '.wiki', 'css_name': 'styles/style.css',
-\           'diary_caption_level': -1,
-\           'template_path': '~/org/html/templates',
-\           'template_default': 'default_template',
-\           'template_ext': '.tpl'}
-let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'c': 'c', 'rust': 'rust'}
-let wiki.index = 'notes'
-let g:vimwiki_list = [wiki]
-let g:vimwiki_folding = 'expr'
-autocmd FileType vimwiki inoremap <silent><buffer> <C-CR> <Esc>:VimwikiReturn 2 2<CR>
+" {{{ Vim-pad
+let g:pad#dir = "~/org/pad"
+let g:pad#maps#list = "<leader>l"
+let g:pad#maps#new = "<leader><leader>o"
+let g:pad#maps#search = "<leader><leader>s"
+let g:pad#maps#incsearch = "<leader>o"
+let g:pad#maps#newsilent = "<leader><leader><leader>s"
+let g:pad#window_height = 15
+let g:pad#position = { "list" : "right", "pads": "right" }
 
-" Use local links instead when exporting to HTML.
-" Also copies the file to the correct place.
-function! VimwikiLinkConverter(link, source_wiki_file, target_html_file)
-    if a:link =~# '^local:' || a:link =~# '^file'
-        let link_infos = vimwiki#base#resolve_link(a:link)
-        let html_include_folder = fnamemodify(a:target_html_file, ':h') . '/includes/'
-        if !isdirectory(html_include_folder)
-            call mkdir(html_include_folder, "p")
-        endif
-        let target_file = html_include_folder . fnamemodify(link_infos.filename, ':t')
-        call system('cp ' . fnameescape(link_infos.filename) .
-                    \ ' ' . fnameescape(target_file))
-        echo target_file
-        return target_file
-        let relative_link =
-                    \ fnamemodify(a:target_html_file, ':h') . '/' . html_link
-        return html_link
-    endif
-    return ''
-endfunction
+autocmd FileType markdown nnoremap <silent><buffer> <C-c><C-c> :Dispatch pandoc -o ~/org/pdf/%:t:r.pdf %<cr>
 " }}}
 " {{{ VimTex
 let g:vimtex_fold_enabled=1
@@ -339,8 +323,8 @@ nnoremap <leader>s :w<cr>
 
 noremap <c-l> zz
 
-nmap <leader>o <Plug>VimwikiMakeDiaryNote
-nmap <leader><leader>o <Plug>VimwikiDiaryIndex
+" nmap <leader>o <Plug>VimwikiMakeDiaryNote
+" nmap <leader><leader>o <Plug>VimwikiDiaryIndex
 
 " Opening a file with the same path header as the current file
 nnoremap <leader>e :e %:p:h/
