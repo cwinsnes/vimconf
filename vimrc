@@ -254,8 +254,8 @@ let g:vim_markdown_fenced_languages = ['js=javascript', 'javascript=javascript',
 let g:pad#dir = "~/org/pad"
 let g:pad#maps#list = "<leader>l"
 let g:pad#maps#new = "<leader><leader>o"
-let g:pad#maps#search = "<leader><leader>s"
-let g:pad#maps#incsearch = "<leader>o"
+let g:pad#maps#search = "<leader>o"
+let g:pad#maps#incsearch = "<leader><leader>s"
 let g:pad#maps#newsilent = "<leader><leader><leader>s"
 let g:pad#window_height = 15
 let g:pad#position = { "list" : "right", "pads": "right" }
