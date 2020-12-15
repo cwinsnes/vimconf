@@ -30,7 +30,7 @@ Plug 'cwinsnes/vim-spotlight' " Highlight current line upon buffer switch
 " }}}
 
 " {{{ Programming plugins
-Plug 'airblade/vim-gitgutter' " Git diff in the gutter
+Plug 'mhinz/vim-signify'  " Git diffs in sidebar
 Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
 
 Plug 'pangloss/vim-javascript'
@@ -70,7 +70,9 @@ Plug 'kshenoy/vim-signature'         " Show marks on the side
 " {{{ Visual plugins
 Plug 'machakann/vim-highlightedyank' " Highlights the yanked region when yanking
 Plug 'Yggdroot/indentLine'
-Plug 'itchyny/lightline.vim'
+if has('nvim')
+    Plug 'datwaft/bubbly.nvim'
+endif
 
 " {{{ Colorschemes
 Plug 'joshdick/onedark.vim'
