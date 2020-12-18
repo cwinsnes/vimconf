@@ -101,7 +101,7 @@ set signcolumn=auto
 set updatetime=100
 set conceallevel=2
 set concealcursor=
-set cmdheight=2
+set cmdheight=1
 set nolist
 let g:vimsyn_embed='lPr'
 nnoremap Q <nop>
