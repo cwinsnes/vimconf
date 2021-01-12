@@ -35,6 +35,7 @@ Plug 'tpope/vim-sleuth'   " Heuristically set tabwidth
 
 Plug 'pangloss/vim-javascript'
 Plug 'lervag/vimtex'
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown' " Needed for expanded functionality in markdown
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
