@@ -260,7 +260,7 @@ let g:pad#maps#search = "<leader>o"
 let g:pad#maps#incsearch = "<leader><leader>s"
 let g:pad#maps#newsilent = "<leader><leader><leader>s"
 let g:pad#window_height = 15
-let g:pad#position = { "list" : "right", "pads": "right" }
+let g:pad#position = { "list" : "bottom", "pads": "bottom" }
 
 autocmd FileType markdown nnoremap <silent><buffer> <C-c><C-c> :Dispatch pandoc -o ~/org/pdf/%:t:r.pdf %<cr>
 " }}}
