@@ -90,7 +90,7 @@ call plug#end()
 " {{{ Basic vim settings
 set showcmd
 set scrolloff=5
-set tabstop=4 softtabstop=0 shiftwidth=4 expandtab cindent
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab cindent
 set autoindent
 set modeline
 set modelines=3
@@ -262,7 +262,7 @@ let g:pad#maps#search = "<leader>o"
 let g:pad#maps#incsearch = "<leader><leader>s"
 let g:pad#maps#newsilent = "<leader><leader><leader>s"
 let g:pad#window_height = 15
-let g:pad#position = { "list" : "right", "pads": "right" }
+let g:pad#position = { "list" : "bottom", "pads": "bottom" }
 
 autocmd FileType markdown nnoremap <silent><buffer> <C-c><C-c> :Dispatch pandoc -o ~/org/pdf/%:t:r.pdf %<cr>
 " }}}
