@@ -192,6 +192,7 @@ nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
 nnoremap <C-m> <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
 autocmd Filetype python,c,cpp,rust,java setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype python setlocal tabstop=4
 endif
 "}}}
 " {{{ Treesitter
