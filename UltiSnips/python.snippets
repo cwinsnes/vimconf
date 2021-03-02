@@ -8,9 +8,17 @@ def main():
 	${1:${VISUAL:pass}}
 endsnippet
 
-snippet wo "wo" b
+snippet wo "withopen" b
 with open(`!p snip.rv = quote_style(snip)`${1:${VISUAL:file}}`!p snip.rv = quote_style(snip)`, `!p snip.rv = quote_style(snip)`${2:${VISUAL:r}}`!p snip.rv = quote_style(snip)`) as ${3:${VISUAL:file}}:
 	${4:${VISUAL:pass}}
+endsnippet
+
+snippet arg "argument" b
+:${1:${VISUAL:arg}}: ${2:${VISUAL:description.}}
+endsnippet
+
+snippet returns "returns" b
+:returns: ${1:${VISUAL:description}}
 endsnippet
 
 snippet np "numpy" b
